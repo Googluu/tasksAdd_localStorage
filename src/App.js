@@ -3,6 +3,7 @@ import './App.css';
 import {TaskCreator} from './components/TaskCreator';
 import {TaskTable} from './components/TaskTable'
 import {VisibilityControl} from './components/VisbilityControl'
+import {Container} from './components/Container'
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
 
   const toggleTask = (task) => {
     setTasksItems(
-      tasksItems.map((t) => (t.name == task.name ? {...t, done: !t.done} : t))
+      tasksItems.map((t) => (t.name === task.name ? {...t, done: !t.done} : t))
     )
   }
 
@@ -41,13 +42,14 @@ function App() {
   }, [ tasksItems ])
 
   return (
-    <div className="App">
+    <main className="bg-dark vh-100 text-white">
+      <Container>
       <TaskCreator createNewTask={createNewTask} />
-      <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
-      <VisibilityControl 
-        isChecked={showCompleted}
-        setShowCompleted={(checked) => setShowCompleted(checked)}
-        cleanTasks={cleanTasks}
+        <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+        <VisibilityControl 
+          isChecked={showCompleted}
+          setShowCompleted={(checked) => setShowCompleted(checked)}
+          cleanTasks={cleanTasks}
       />
       {
         showCompleted === true && (
@@ -58,8 +60,8 @@ function App() {
           />
         )
       }
-
-    </div>
+      </Container>
+    </main>
   );
 }
 
