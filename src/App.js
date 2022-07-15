@@ -1,9 +1,13 @@
 import './App.css';
+import {TaskCreator} from './components/TaskCreator'
 
 function App() {
+
   return (
     <div className="App">
-      <h1>Hello world</h1>
+
+      <TaskCreator />
+
     </div>
   );
 }
